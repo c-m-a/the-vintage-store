@@ -5,12 +5,12 @@
   <main class="home__main">
     <article class="home__card">
       <section class="home__cardImgBox">
-        <img class="home__cardImg " src="product.image" alt="">
+        <img class="home__cardImg " [src]="product.image" alt="">
       </section>
       <section class="home__cardDetails">
-        <h1 class="home__cardTitle"> product.name </h1>
-        <p class="home__cardPrice">product.price</p>
-        <p class="home__cardTax ">product.tax</p>
+        <h1 class="home__cardTitle">{{ product.name }}</h1>
+        <p class="home__cardPrice">{{ product.price }}</p>
+        <p class="home__cardTax ">{{ product.tax }}</p>
         <p class="home__cardDiscount">-20%</p>
         <div class="home__cardDescriptionBox">
           <h3 class="home__cardDescTitle">Descripci&oacute;n</h3>

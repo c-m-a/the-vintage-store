@@ -1,0 +1,31 @@
+<div class="home">
+  <header class="home__header">
+    <img class="home__headerImg" src="http://sigmatest.sigmastorage.online/sources/bg-1.png" alt="">
+  </header>
+  <main class="home__main">
+    <article class="home__card">
+      <section class="home__cardImgBox">
+        <img class="home__cardImg " [src]="product.image" alt="">
+      </section>
+      <section class="home__cardDetails">
+        <h1 class="home__cardTitle">{{ product.name }}</h1>
+        <p class="home__cardPrice">{{ product.price | currency:'COP':'symbol-narrow':'1.0-0' }}</p>
+        <p *ngIf="product.id === 1" class="home__cardTax ">{{ product.tax | currency:'COP':'symbol-narrow':'1.0-0' }} imp</p>
+        <p *ngIf="product.isOnSale" class="home__cardDiscount">-20%</p>
+        <div class="home__cardDescriptionBox">
+          <h3 class="home__cardDescTitle">Descripci&oacute;n</h3>
+          <hr class="home__cardDivider" />
+          <p>
+            Sit earum dolore obcaecati maiores iste Deleniti eaque tempore consectetur debitis iure molestiae cupiditate quas vero eaque placeat? Recusandae numquam fuga quasi excepturi temporibus Animi necessitatibus dolores blanditiis assumenda expedita?
+          </p>
+        </div>
+        <a class="home__btn--primary">Comprar</a>
+      </section>
+    </article>
+    <!-- end home__main -->
+  </main>
+  <footer class="home__footer">
+    <img class="home__footerLogo" src="http://sigmatest.sigmastorage.online/sources/logo.png" alt="">
+  </footer>
+</div>
+

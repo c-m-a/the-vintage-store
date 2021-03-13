@@ -20,3 +20,24 @@ body {
   font-size: 1.6rem;
 }
 
+@font-face {
+  font-family: 'poppins-regular';
+  src: url("assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'poppins-semibold';
+  src: url("assets/fonts/Poppins-SemiBold.ttf");
+}
+
+body {
+  font-family: poppins-regular;
+  font-size: 1.6rem;
+  background-color: var(--body-bg);
+}
+
+::root {
+  --body-bg: #fdf1e2;
+  --main-color: #7d5050;
+}
+

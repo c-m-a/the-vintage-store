@@ -1,0 +1,133 @@
+<div class="checkout">
+  <header class="checkout__header">
+    <img class="checkout__headerImg" src="http://sigmatest.sigmastorage.online/sources/bg-2.png" alt="">
+  </header>
+  <main class="checkout__main">
+    <article class="checkout__card">
+      <section class="checkout__orderSummary">
+        <h1 class="checkout__orderTitle">
+          compra {{ order.product.name }}
+        </h1>
+        <div class="checkout__orderTotal">
+          <div class="checkout__orderAmountTitle">Total producto:</div>
+          <div class="checkout__orderAmountTotal">{{ order.product.price | currency:'COP':'symbol-narrow':'1.0-0' }}</div>
+        </div>
+        <hr />
+        <div class="checkout__orderDetails">
+          <div class="checkout__orderCheckout">
+            <div class="checkout__orderCheckoutTitle">
+              Detalles de la compra
+            </div>
+            <div class="checkout__orderAmountTotal">
+              {{ order.product.price | currency:'COP':'symbol-narrow':'1.0-0' }}
+            </div>
+          </div>
+          <div *ngIf="order.product.id === 1; else zeroTax" class="checkout__orderTax">
+            {{ order.product.tax | currency:'COP':'symbol-narrow':'1.0-0' }} imp.
+          </div>
+          <ng-template #zeroTax>
+            <div class="checkout__orderTax">
+              {{ 0 | currency:'COP':'symbol-narrow':'1.0-0' }} imp.
+            </div>
+          </ng-template>
+          <div *ngIf="order.product.isOnSale" class="checkout__orderDiscount">
+            -20 % de descuento
+          </div>
+        </div>
+        <hr />
+        <div class="checkout__orderNetSum">
+          <div class="checkout__orderNetTitle">
+            Total de la compra
+          </div>
+          <div class="checkout__orderAmountTotal">
+            {{ order.total | currency:'COP':'symbol-narrow':'1.0-0' }}
+          </div>
+        </div>
+      </section>
+      <section class="checkout__customerForm">
+        <form (ngSubmit)="onSubmitOrder(f)" #f="ngForm" novalidate>
+          <div class="checkout__customerFullName">
+            <div class="checkout__customerFirstName">
+              <label for="">
+                <i class="fas fa-user"></i>Nombre
+              </label>
+              <input
+                type="text"
+                name="firstName"
+                [(ngModel)]="order.firstName"
+                #firstName="ngModel"
+                minlength=3
+                pattern="[A-Za-z]*"
+                required
+              />
+              <div *ngIf="firstName.touched && !firstName.valid" class="checkout__customerForm--alert">
+                <div *ngIf="firstName.errors?.required">El nombre es requerido</div>
+                <div *ngIf="firstName.errors?.minlength">Debe digitar al menos {{ firstName.errors?.minlength.requiredLength }} letras!</div>
+                <div *ngIf="firstName.errors?.pattern">Tu nombre no puede contener n&uacute;meros</div>
+              </div>
+            </div>
+            <div class="checkout__customerLastName">
+              <label for="">
+                <i></i>Apellido
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                #lastName="ngModel"
+                [(ngModel)]="order.lastName"
+                minlength=3
+                pattern="[A-Za-z]*"
+                required
+              />
+              <div *ngIf="lastName.touched && !lastName.valid" class="checkout__customerForm--alert">
+                <div *ngIf="lastName.errors?.required">El nombre es requerido</div>
+                <div *ngIf="lastName.errors?.minlength">Debe digitar al menos {{ lastName.errors?.minlength.requiredLength }} letras!</div>
+                <div *ngIf="lastName.errors?.pattern">Tu apellido no puede contener n&uacute;meros</div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout__customerEmail">
+            <label for="">
+              <i class="fas fa-envelope"></i>E-mail
+            </label>
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="order.email"
+              #email="ngModel"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+              placeholder="Escribe tu correo..."
+            />
+            <div *ngIf="email.touched && !email.valid" class="checkout__customerForm--alert">
+              <div *ngIf="email.errors?.pattern">Escribe una direcci&oacute;n valida!</div>
+            </div>
+          </div>
+          <div class="checkout__customerCard">
+            <label for="">
+              <i class="fas fa-credit-card"></i>Tarjeta
+            </label>
+            <input
+              type="text"
+              name="card"
+              ngModel
+              #card="ngModel"
+              pattern="^\d+"
+              placeholder="4242-4242-4242-4242"
+            />
+            <div *ngIf="card.touched && !card.valid" class="checkout__customerForm--alert">
+              <div *ngIf="card.errors?.pattern">Solo es valido digitar n&uacute;meros en la tarjeta!</div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="customer__btn--primary"
+            >Finalizar compra</button>
+        </form>
+      </section>
+    </article>
+  </main>
+  <footer class="checkout__footer">
+    <img class="checkout__footerLogo" src="http://sigmatest.sigmastorage.online/sources/logo.png" alt="">
+  </footer>
+</div>
+

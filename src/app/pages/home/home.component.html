@@ -9,9 +9,9 @@
       </section>
       <section class="home__cardDetails">
         <h1 class="home__cardTitle">{{ product.name }}</h1>
-        <p class="home__cardPrice">{{ product.price }}</p>
-        <p class="home__cardTax ">{{ product.tax }}</p>
-        <p class="home__cardDiscount">-20%</p>
+        <p class="home__cardPrice">{{ product.price | currency:'COP':'symbol-narrow':'1.0-0' }}</p>
+        <p *ngIf="product.id === 1" class="home__cardTax ">{{ product.tax | currency:'COP':'symbol-narrow':'1.0-0' }} imp</p>
+        <p *ngIf="product.isOnSale" class="home__cardDiscount">-20%</p>
         <div class="home__cardDescriptionBox">
           <h3 class="home__cardDescTitle">Descripci&oacute;n</h3>
           <hr class="home__cardDivider" />

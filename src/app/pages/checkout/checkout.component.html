@@ -6,11 +6,11 @@
     <article class="checkout__card">
       <section class="checkout__orderSummary">
         <h1 class="checkout__orderTitle">
-          compra order.product.name
+          compra {{ order.product.name }}
         </h1>
         <div class="checkout__orderTotal">
           <div class="checkout__orderAmountTitle">Total producto:</div>
-          <div class="checkout__orderAmountTotal">order.product.price</div>
+          <div class="checkout__orderAmountTotal">{{ order.product.price | currency:'COP':'symbol-narrow':'1.0-0' }}</div>
         </div>
         <hr />
         <div class="checkout__orderDetails">
@@ -19,15 +19,15 @@
               Detalles de la compra
             </div>
             <div class="checkout__orderAmountTotal">
-               order.product.price
+              {{ order.product.price | currency:'COP':'symbol-narrow':'1.0-0' }}
             </div>
           </div>
           <div *ngIf="order.product.id === 1; else zeroTax" class="checkout__orderTax">
-            order.product.tax
+            {{ order.product.tax | currency:'COP':'symbol-narrow':'1.0-0' }} imp.
           </div>
           <ng-template #zeroTax>
             <div class="checkout__orderTax">
-              0 imp.
+              {{ 0 | currency:'COP':'symbol-narrow':'1.0-0' }} imp.
             </div>
           </ng-template>
           <div *ngIf="order.product.isOnSale" class="checkout__orderDiscount">
@@ -40,7 +40,7 @@
             Total de la compra
           </div>
           <div class="checkout__orderAmountTotal">
-            order.total
+            {{ order.total | currency:'COP':'symbol-narrow':'1.0-0' }}
           </div>
         </div>
       </section>
@@ -54,6 +54,7 @@
               <input
                 type="text"
                 name="firstName"
+                [(ngModel)]="order.firstName"
                 minlength=3
                 pattern="[A-Za-z]*"
                 required
@@ -66,6 +67,7 @@
               <input
                 type="text"
                 name="lastName"
+                [(ngModel)]="order.lastName"
                 minlength=3
                 pattern="[A-Za-z]*"
                 required
@@ -79,6 +81,7 @@
             <input
               type="email"
               name="email"
+              [(ngModel)]="order.email"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
               placeholder="Escribe tu correo..."
             />

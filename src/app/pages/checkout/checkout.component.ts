@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm  } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 import { Order } from '../../models/Order';
+import { HttpClient } from '@angular/common/http';
+
+import { Product } from '../../models/Product';
 
 @Component({
   selector: 'app-checkout',
@@ -36,6 +39,27 @@ export class CheckoutComponent implements OnInit {
       } else {
         this.order.total += this.order.product.tax;
       }
+    }
+  }
+
+  onSubmitOrder(f: NgForm):void {
+    this.order.orderedAt = new Date();
+
+    if (f.valid) {
+      this.http.post<any>(this.ordersUrl, this.order)
+        .subscribe(data => {
+          if (data.success) {
+            this.order = {
+              product: {
+                price: 0,
+                tax: 0,
+                isOnSale: false
+              },
+              total: 0
+            };
+            alert('Su orden de ha sido procesada! 😃');
+          }
+        });
     }
   }
 

@@ -1,1 +1,109 @@
-<p>checkout works!</p>
+<div class="checkout">
+  <header class="checkout__header">
+    <img class="checkout__headerImg" src="http://sigmatest.sigmastorage.online/sources/bg-2.png" alt="">
+  </header>
+  <main class="checkout__main">
+    <article class="checkout__card">
+      <section class="checkout__orderSummary">
+        <h1 class="checkout__orderTitle">
+          compra order.product.name
+        </h1>
+        <div class="checkout__orderTotal">
+          <div class="checkout__orderAmountTitle">Total producto:</div>
+          <div class="checkout__orderAmountTotal">order.product.price</div>
+        </div>
+        <hr />
+        <div class="checkout__orderDetails">
+          <div class="checkout__orderCheckout">
+            <div class="checkout__orderCheckoutTitle">
+              Detalles de la compra
+            </div>
+            <div class="checkout__orderAmountTotal">
+               order.product.price
+            </div>
+          </div>
+          <div *ngIf="order.product.id === 1; else zeroTax" class="checkout__orderTax">
+            order.product.tax
+          </div>
+          <ng-template #zeroTax>
+            <div class="checkout__orderTax">
+              0 imp.
+            </div>
+          </ng-template>
+          <div *ngIf="order.product.isOnSale" class="checkout__orderDiscount">
+            -20 % de descuento
+          </div>
+        </div>
+        <hr />
+        <div class="checkout__orderNetSum">
+          <div class="checkout__orderNetTitle">
+            Total de la compra
+          </div>
+          <div class="checkout__orderAmountTotal">
+            order.total
+          </div>
+        </div>
+      </section>
+      <section class="checkout__customerForm">
+        <form novalidate>
+          <div class="checkout__customerFullName">
+            <div class="checkout__customerFirstName">
+              <label for="">
+                <i class="fas fa-user"></i>Nombre
+              </label>
+              <input
+                type="text"
+                name="firstName"
+                minlength=3
+                pattern="[A-Za-z]*"
+                required
+              />
+            </div>
+            <div class="checkout__customerLastName">
+              <label for="">
+                <i></i>Apellido
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                minlength=3
+                pattern="[A-Za-z]*"
+                required
+              />
+            </div>
+          </div>
+          <div class="checkout__customerEmail">
+            <label for="">
+              <i class="fas fa-envelope"></i>E-mail
+            </label>
+            <input
+              type="email"
+              name="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+              placeholder="Escribe tu correo..."
+            />
+          </div>
+          <div class="checkout__customerCard">
+            <label for="">
+              <i class="fas fa-credit-card"></i>Tarjeta
+            </label>
+            <input
+              type="text"
+              name="card"
+              pattern="^\d+"
+              placeholder="4242-4242-4242-4242"
+            />
+          </div>
+          <button
+            type="submit"
+            class="customer__btn--primary"
+            >Finalizar compra</button>
+        </form>
+      </section>
+    </article>
+  </main>
+  <footer class="checkout__footer">
+    <img class="checkout__footerLogo" src="http://sigmatest.sigmastorage.online/sources/logo.png" alt="">
+  </footer>
+</div>
+

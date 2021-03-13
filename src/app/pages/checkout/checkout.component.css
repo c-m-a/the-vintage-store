@@ -1,0 +1,206 @@
+hr {
+  border: none;
+  height: 1px;
+  background-color: #7d5050;
+  margin: .5rem 0;
+}
+
+i {
+  font-size: 1.2rem;
+  margin: .5rem;
+  color: #7d5050;
+}
+
+input {
+  height: 3.8rem;
+  width: 100%;
+  border: .1rem solid #979797;
+  border-radius: .3rem;
+  padding: 0 1rem;
+}
+
+input:focus {
+  outline: none !important;
+  border: .2rem solid #7d5050;
+}
+
+.checkout {
+  color: #635b5b;
+  font-size: 1.5rem;
+}
+
+.checkout__header {
+  position: absolute;
+  top: 0;
+  height: 46.7rem;
+  width: 100%;
+  z-index: -1;
+}
+
+.checkout__main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+.checkout__headerImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.checkout__footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 7rem;
+}
+
+.checkout__footerLogo {
+  width: 14rem;
+}
+
+.checkout__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7.7rem 5rem;
+  width: 80%;
+  margin-top: 12.5rem;
+  background-color: white;
+  border-radius: .4rem;
+  -webkit-box-shadow: 0 0 .9rem .2rem rgba(158,158,158,.62);
+     -moz-box-shadow: 0 0 .9rem .2rem rgba(158,158,158,.62);
+          box-shadow: 0 0 .9rem .2rem rgba(158,158,158,.62);
+}
+
+.checkout__orderSummary {
+  max-width: 50rem;
+  width: 80%;
+  min-width: 20rem;
+}
+
+.checkout__orderTitle {
+  font-size: 3rem;
+  font-family: poppins-semibold;
+  text-transform: uppercase;
+  text-align: center;
+  color: #635b5b;
+  margin-bottom: 4rem;
+}
+
+.checkout__orderAmountTotal {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.checkout__orderTax {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #857a7a;
+}
+
+.checkout__orderTotal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__orderCheckout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__orderTax {
+  width: 100%;
+  text-align: right;
+}
+
+.checkout__orderDiscount {
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: right;
+  color: #7d5050;
+}
+
+.checkout__orderNetSum {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__cardTitle {
+  font-family: poppins-semibold;
+  color: #7d5050;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.checkout__customerForm {
+  margin-top: 5rem;
+  max-width: 50rem;
+  width: 80%;
+  min-width: 30rem;
+}
+
+.checkout__customerFullName {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout__customerFirstName {
+  flex: .45;
+}
+
+.checkout__customerLastName {
+  flex: .45;
+}
+
+.customer__btn--primary {
+  display: block;
+  padding: 1rem 0;
+  width: 15rem;
+  color: white;
+  font-family: poppins-semibold;
+  background-color: #7d5050;
+  border: .1rem solid #7d5050;
+  border-radius: .4rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.card__imgBox {
+  flex: .47;
+}
+
+.card__img {
+  width: 100%;
+}
+
+.card__details {
+  padding-top: 1rem;
+  flex: .47;
+}
+
+@media only screen and (max-width: 1024px) {
+  .checkout__card {
+    margin-top: 11rem;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .checkout__card {
+    margin-top: 5.5rem;
+    padding: 2.5rem;
+  }
+
+  .checkout__customerFullName {
+    flex-direction: column;
+  }
+}
+
+form > div {
+  margin-bottom: 2.4rem;
+}
+
